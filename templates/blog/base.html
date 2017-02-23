@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//">
+
+<link type="text/css" rel="stylesheet" href="{% static 'syntaxhighlighter/styles/shCoreDefault.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="{% static 'syntaxhighlighter/scripts/shCore.js' %}"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<title>The blog of Dear</title>
+    {% block header %}
+    {% endblock %}
+</head>
+<body class="customize-support">
+    <div class="page-header">
+        {% if user.is_authenticated %}
+        <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+        <p class="top-menu">Hello {{ user.username }}<small>&nbsp;<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a></small></p>
+        {% else %}
+        <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        {% endif %}
+        <h1><a href="/">The Blog of Dear</a></h1>
+    <div class="nav" >
+        <ul>
+            <li><a href="{% url 'blog.views.post_list' %}">首页</a></li>
+            <li><a href="{% url 'blog.views.contents' %}">博客目录</a></li>
+            <li><a href="{% url 'blog.views.about_me' %}">关于个人</a></li>
+        </ul>
+    </div>
+    </div>
+<div class="main">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <p><div class="list-group-item active">标签分类：</div></p>
+        {% for tag in tags %}
+            <div class="test">
+                <div class="{% cycle 'label label-danger' 'label label-primary' 'label label-success'  'label label-info' 'label label-default' 'label label-warning' %}">
+                    <a href="{% url 'blog.views.post_list_by_tag' tag=tag.name %}">{{ tag.name }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    <br><br>
+        <p><div class="list-group-item active">最新发布：</div></p>
+            {% for post in postsAll %}
+                <div class="test">
+                    <div class="{% cycle 'label label-danger' 'label label-primary' 'label label-success'  'label label-info' 'label label-default' 'label label-warning'  %}">
+                        <a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a><br>发表日期：{{ post.published_date|date:"Y年m月d日" }}
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+<div class="foo"><p>&nbsp;</p><div class="panel-footer"><p>Dear©2016 </p> </div></div>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushJScript.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushBash.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushPhp.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushJava.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushSql.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushXml.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushPython.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushCss.js' %}"></script>
+<script class="javascript" src="{% static 'syntaxhighlighter/scripts/shBrushCpp.js' %}"></script>
+</body>
+
+</html>

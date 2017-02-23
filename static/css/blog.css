@@ -1,0 +1,132 @@
+.page-header {
+    background-color: #2d60ff;
+    margin-top: 0;
+    padding-top: 10px;
+    position: fixed;
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 9999;
+}
+.right{
+    width: 15%;
+    float: right;
+    padding-top: 250px;
+    padding-right: 20px;
+}
+.test{
+    float: left;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+.right a{
+    color: white;
+}
+.label{
+    display: block;
+}
+
+.nav{
+    list-style-type: none;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background-color: #718bff;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.nav ul {
+    margin-left: 30%;
+}
+.nav li{
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 10px;
+}
+.nav a{
+    color: white;
+}
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+
+}
+.main{
+    width: 100%;
+    float: right;
+}
+.content {
+    float: left;
+    margin-left: 190px;
+    padding-top: 150px;
+    width: 70%;
+    background-color: rgba(227, 226, 238, 0.33);
+
+}
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+.date {
+    float: right;
+    color: #828282;
+}
+.save {
+    float: right;
+}
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+.post {
+    margin-bottom: 70px;
+}
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+.footer{
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+.panel-footer{
+    position: fixed;
+    text-align: center;
+    background-color: rgba(183, 181, 194, 0.41);
+    clear: both;
+    width: 100%;
+    top:95%;
+}
+.foo{
+    margin-bottom: 30px;
+    width: 100%;
+}
+.contents_ul{
+    padding: 0;
+}
+.contents_li{
+    list-style-type: none;
+    font-size: 28px;
+    margin: 40px 10px 0px 10px;
+}
+
+.contents_li:nth-child(1){
+    margin-top: 10px;
+}
+
+.contents_span{
+    font-size: 12px;
+    color: #828282;
+    margin-left: 20px;
+}

@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% for post in posts %}
+    <div class="post">
+        <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>发表时间: {{ post.published_date|date:'Y年m月d日,H时i分'}}</p>
+        <p>{% autoescape off %}{{ post.text}}{% endautoescape %}</p>
+        <span>标签：</span>
+        <span>{% for tag in post.tags.all %}<a href="{% url 'blog.views.post_list_by_tag'  tag=tag.name %}">{{ tag.name }}</a>{% endfor %}</span>
+        <p>分类：<a href="{% url 'blog.views.post_list_by_category' cg=post.category.name %}">{{ post.category }}</a></p>
+    </div>
+{% endfor %}
+    {% if page %}
+        <div class="pagination pagination-small pagination-centered">
+            {% if posts.has_previous %}
+                    <li><a href="?page={{ posts.previous_page_number }}">上一页</a></li>
+                {% endif %}
+                    <li><a> {{ posts.number }} </a></li>
+                {% if posts.has_next %}
+                    <li><a href="?page={{ posts.next_page_number }}">下一页</a></li>
+                {% endif %}
+        </ul>
+        </div>
+
+    {% endif %}
+{% endblock content %}
